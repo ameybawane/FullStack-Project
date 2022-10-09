@@ -1,0 +1,13 @@
+.form-control {
+    border: 2px solid;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+input:disabled {
+    background-color: #97929248;
+    cursor: not-allowed;
+}

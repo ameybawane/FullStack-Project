@@ -1,0 +1,70 @@
+<div class="container my-5">
+    <h1 class="mb-3">Edit Employee</h1>
+    <div class="row">
+        <div class="col-6">
+            <form #form="ngForm" [formGroup]="editEmpForm" (ngSubmit)="updateEmployee()">
+                <div class="mb-3">
+                    <label for="id" class="form-label">Id</label>
+                    <input type="text" class="form-control" id="id" readonly
+                    name="id" [(ngModel)]="employeeDetails.id" formControlName="Id" >
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" 
+                    name="name" [(ngModel)]="employeeDetails.name"
+                    formControlName="Name" 
+                    [ngClass]="{'is-invalid': (editEmpForm.get('Name')?.touched || editEmpForm.get('Name')?.dirty) && !editEmpForm.get('Name')?.valid}">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('Name')?.errors?.['required']">Name can't be blank.</span>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email"
+                    name="email" [(ngModel)]="employeeDetails.email"
+                    formControlName="Email" 
+                    [ngClass]="{'is-invalid': (editEmpForm.get('Email')?.touched || editEmpForm.get('Email')?.dirty) && !editEmpForm.get('Email')?.valid}">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('Email')?.errors?.['required']">Email can't be blank.</span>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="number" class="form-control" id="phone"
+                    name="phone" [(ngModel)]="employeeDetails.phone"
+                    formControlName="Phone" 
+                    [ngClass]="{'is-invalid': (editEmpForm.get('Phone')?.touched || editEmpForm.get('Phone')?.dirty) && !editEmpForm.get('Phone')?.valid}">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('Phone')?.errors?.['required']">Phone can't be blank.</span>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="salary" class="form-label">Salary</label>
+                    <input type="number" class="form-control" id="salary"
+                    name="salary" [(ngModel)]="employeeDetails.salary"
+                    formControlName="Salary"
+                    [ngClass]="{'is-invalid': (editEmpForm.get('Salary')?.touched || editEmpForm.get('Salary')?.dirty) && !editEmpForm.get('Salary')?.valid}">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('Salary')?.errors?.['required']">Salary can't be blank.</span>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <input type="text" class="form-control" id="department"
+                    name="department" [(ngModel)]="employeeDetails.department"
+                    formControlName="Department"
+                    [ngClass]="{'is-invalid': (editEmpForm.get('Department')?.touched || editEmpForm.get('Department')?.dirty) && !editEmpForm.get('Department')?.valid}">
+                    <span class="invalid-feedback">
+                        <span *ngIf="editEmpForm.get('Department')?.errors?.['required']">Department can't be blank.</span>
+                    </span>
+                </div>
+                <input type="submit" value="Update" class="btn btn-primary" [disabled]="!editEmpForm.valid">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" value="Delete" class="btn btn-danger" 
+                (click)="deleteEmployee(employeeDetails.id)">
+                
+            </form>
+        </div>
+    </div>
+
+</div>
